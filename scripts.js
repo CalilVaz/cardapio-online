@@ -164,7 +164,14 @@ checkoutBtn.addEventListener("click", function () {
 
   const cartItems = cart
     .map((item) => {
-      return ` ${item.name} - Quantidade: (${item.quantity}) - Preço: R$ ${item.price} | `;
+      return ` ${item.name} - Quantidade: (${
+        item.quantity
+      }) - Preço: ${item.price.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      })}
+      
+`;
     })
     .join("");
 
@@ -187,7 +194,6 @@ function checkRestaurantOpen() {
 
 const spanItem = document.getElementById("date-span");
 const isOpen = checkRestaurantOpen();
-
 if (isOpen) {
   spanItem.classList.remove("bg-red-500");
   spanItem.classList.add("bg-green-600");
@@ -195,3 +201,5 @@ if (isOpen) {
   spanItem.classList.remove("bg-green-600");
   spanItem.classList.add("bg-red-500");
 }
+
+console.log(isOpen);
